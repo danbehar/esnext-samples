@@ -30,6 +30,12 @@ var ImplicitBounding = function() {
 //new ImplicitBounding();
 
 var noThis = function() {
-    this.doesntExist = 'notsurewhy';
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode
+    this.doesntExist = 'inStrictMode';
 }
 //noThis();
+var inStrict = function() {
+    this.isValid = 'There is the same this';
+    (() => console.log(this.isValid + ' auto-bound within this function'))();
+}.bind({});
+//inStrict();
